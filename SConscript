@@ -15,9 +15,8 @@ CPPPATH = [cwd]
 LOCAL_CCFLAGS = ''
 
 #if GetDepend(['GPS_RMC_USING_SAMPLE']):
-src += Glob('sample/gps_rmc_sample.c')
+src += Glob('sample/rtt_gps_rmc_sample.c')
 
-#group = DefineGroup('gps_rmc', src, depend = ['PKG_USING_GPS_RMC'], CPPPATH = CPPPATH, LOCAL_CCFLAGS = LOCAL_CCFLAGS)
-group = DefineGroup('gps_rmc', src, depend = [], CPPPATH = CPPPATH, LOCAL_CCFLAGS = LOCAL_CCFLAGS)
+group = DefineGroup('gps_rmc', src, depend = ['PKG_USING_GPS_RMC'], CPPPATH = CPPPATH, LOCAL_CCFLAGS = LOCAL_CCFLAGS)
 
 Return('group')

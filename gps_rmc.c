@@ -95,7 +95,7 @@ void gps_float_parse(gps_float_t *info)
     if (p)
         info->value_l = atol(++p);
 #ifdef GPS_RMC_SHOW_DEBUG
-    printf("string: %s --> %d.%d\r\n", info->string, info->value_h, info->value_l);
+    printf("string: %s --> %ld.%ld\r\n", info->string, info->value_h, info->value_l);
 #endif // GPS_RMC_SHOW_DEBUG
 }
 
@@ -154,7 +154,7 @@ void gps_source_to_location_format(gps_float_t *location, gps_float_t *source)
     location->value = (double)(source->value_h / 100) + (source->value - (source->value_h / 100) * 100) / 60;
     location->value_h = (uint32_t)location->value;
     location->value_l = (uint32_t)((location->value - (uint32_t)location->value) * 10000000);
-    sprintf(location->string,"%d.%d", location->value_h, location->value_l);
+    sprintf(location->string,"%ld.%ld", location->value_h, location->value_l);
 #ifdef GPS_RMC_SHOW_DEBUG
     printf("source:%s -> location:%s\r\n", source->string, location->string);
 #endif // GPS_RMC_SHOW_DEBUG
@@ -260,7 +260,7 @@ char gps_rmc_parse(gps_info_t info, char *buff)
         );
         //  有效，处理所有数据
         gps_coord_handle(&info->coord);
-        sprintf(info->speed.string, "%d.%d", (int)(atof(info->speed.string) * 1.85), (uint32_t)(atof(info->speed.string) * 1850) % 1000);
+        sprintf(info->speed.string, "%d.%ld", (int)(atof(info->speed.string) * 1.85), (uint32_t)(atof(info->speed.string) * 1850) % 1000);
         gps_float_parse(&info->speed);
         gps_float_parse(&info->direction);
     }

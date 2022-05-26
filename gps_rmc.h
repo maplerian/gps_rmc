@@ -45,8 +45,8 @@ typedef struct gps_float gps_float_t;
 //  坐标结构体
 struct gps_coord
 {
-    gps_float_t latitude;  //  经度
-    gps_float_t longitude; //  维度
+    gps_float_t longitude;  //  经度
+    gps_float_t latitude; //  维度
 };
 typedef struct gps_coord gps_coord_t;
 
